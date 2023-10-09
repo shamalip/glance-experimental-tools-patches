@@ -17,6 +17,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    alias(libs.plugins.roborazzi)
 }
 
 android {
@@ -60,11 +61,17 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
     implementation project(':appwidget-configuration')
     debugImplementation project(':appwidget-viewer')
+    debugImplementation project(':appwidget-testing')
 
     implementation(platform(libs.androidx.compose.bom))
     implementation libs.androidx.core.ktx
@@ -87,4 +94,5 @@ dependencies {
     testImplementation(libs.androidx.test.rules)
     testImplementation(libs.androidx.test.ext.junit)
     testImplementation(libs.robolectric)
+    testImplementation(libs.roborazzi)
 }

@@ -26,7 +26,7 @@ kotlin {
 
 android {
     namespace 'com.google.android.glance.tools.viewer'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         minSdk 21
@@ -97,10 +97,13 @@ dependencies {
 
     compileOnly libs.glance.appwidget
 
-    implementation libs.androidx.core
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.foundation)
+
+    implementation libs.androidx.core.ktx
     implementation libs.androidx.activity.compose
     implementation libs.compose.ui.ui
-    implementation libs.compose.material.material3
+    implementation libs.androidx.compose.material3
     implementation libs.compose.material.material
     implementation libs.compose.material.iconsext
 

@@ -26,7 +26,7 @@ kotlin {
 
 android {
     namespace 'com.google.android.glance.appwidget.configuration'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         minSdk 21
@@ -95,10 +95,13 @@ android {
 dependencies {
     api project(":appwidget-host")
 
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.foundation)
+
     implementation libs.glance.appwidget
     implementation libs.compose.foundation.foundation
     implementation libs.compose.ui.ui
-    implementation libs.compose.material.material3
+    implementation libs.androidx.compose.material3
 
     // ======================
     // Test dependencies

@@ -15,6 +15,7 @@
  */
 
 import org.jetbrains.dokka.gradle.DokkaMultiModuleTask
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
     repositories {
@@ -126,17 +127,10 @@ subprojects {
                     && details.requested.version.contains('jre')) {
                 details.useVersion details.requested.version.replace('jre', 'android')
             }
-
-            // FIXME: The AndroidX snapshots are currently in a weird state where they depend
-            //  on 1.0.1 which isn't yet public. Remove this once 1.0.1 is out.
-            if (details.requested.group.startsWith('androidx.compose')
-                    && details.requested.version == '1.0.1') {
-                details.useVersion libs.versions.compose.get()
-            }
         }
     }
 
-    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach { compile ->
+    tasks.withType(KotlinCompile).configureEach { compile ->
         kotlinOptions {
             // Treat all Kotlin warnings as errors
             allWarningsAsErrors = true

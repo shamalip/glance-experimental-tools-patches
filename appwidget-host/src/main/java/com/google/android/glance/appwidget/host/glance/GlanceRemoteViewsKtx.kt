@@ -43,7 +43,7 @@ internal val glanceRemoteViews by lazy { GlanceRemoteViews() }
  * @return the generated RemoteViews
  */
 @ExperimentalGlanceRemoteViewsApi
-suspend fun GlanceAppWidget.compose(
+public suspend fun GlanceAppWidget.compose(
     context: Context,
     size: DpSize,
     state: Any? = null,
